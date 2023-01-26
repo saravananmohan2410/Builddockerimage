@@ -8,5 +8,10 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Dockerrhubconnection'
+    repository: 'saravananmohan2410dockerimage'
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
 
