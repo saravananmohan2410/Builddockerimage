@@ -1,17 +1,17 @@
-name : CustomerApi-CI
+name : saravanan
 trigger:
   branches:
     include:
       - master
   paths:
     include:
-      - CustomerApi/*
+      - saravanan/*
  
 pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  ImageName: 'wolfgangofner/customerapi:$(Build.BuildId)'  
+  ImageName: 'saravanan/customerapi:$(Build.BuildId)'  
 
 stages:
 - stage: Build
@@ -23,7 +23,7 @@ stages:
     - task: Docker@1      
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub'
+        dockerRegistryEndpoint: 'Firstbuildandpush'
         command: 'Build an image'
         dockerFile: '**/CustomerApi/CustomerApi/Dockerfile'
         imageName: '$(ImageName)'
