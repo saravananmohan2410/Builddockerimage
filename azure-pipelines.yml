@@ -26,5 +26,6 @@ stages:
       inputs:
         containerRegistry: 'Dockerrhubconnection'
         repository: 'saravananmohan2410dockerimage'
-        command: 'push'
+        command: 'build'
+        Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
