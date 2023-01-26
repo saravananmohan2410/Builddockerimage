@@ -4,6 +4,9 @@ resources:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  ImageName: 'saravananmohan2410dockerimage/saravanan:$(Build.BuildId)'
+
 
 stages:
 - stage: Build
@@ -12,13 +15,16 @@ stages:
   - job: Build
     displayName: Build and push Docker image
     steps:
-    - task: Docker@1      
+        
+    - task: Docker@1
       inputs:
         containerregistrytype: 'Container Registry'
         dockerRegistryEndpoint: 'Docker Hub'
         command: 'Build an image'
-        dockerFile: '**/CustomerApi/CustomerApi/Dockerfile'
+        dockerFile: '$(Build.SourcesDirectory)/Dockerfile'
         imageName: '$(ImageName)'
         useDefaultContext: false
-        buildContext: 'CustomerApi'
-      displayName: 'Build the Docker image'
+     
+        
+    
+      
